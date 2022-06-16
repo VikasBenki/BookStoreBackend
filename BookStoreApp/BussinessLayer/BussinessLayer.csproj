@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Experimental.System.Messaging" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.6" />
   </ItemGroup>
 
   <ItemGroup>

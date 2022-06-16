@@ -63,23 +63,25 @@ END CATCH
 
 --------- creating procedure for the get all orders ---------
 
-Create proc SP_GetAll_Orders
+alter proc SP_GetAll_Orders
 (
 @UserId int
 )
 As
 Begin
-	select 
+	select b.Book_Name,
 		b.Book_Image,
 		b.Author_Name,
+		o.Actual_Price,
 		o.Order_Price,
 		o.Order_Date,
 		o.Books_Qty,
+		o.BookId,
 		o.OrderId,
 		o.UserId,
 		o.AddressId
 	From Orders o
 	Inner Join Books b
-	On O.BookId = b.BookId
+	On o.BookId = b.BookId
 	where o.UserId =@UserId;
 End

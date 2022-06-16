@@ -34,6 +34,12 @@ namespace BookStoreApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = "localhost:6379";
+            });
+            services.AddMemoryCache(); 
             services.AddTransient<IUserBL, UserBL>();
             services.AddTransient<IUserRL, UserRL>();
             services.AddTransient<IBookBL, BookBL>();
@@ -48,6 +54,10 @@ namespace BookStoreApp
             services.AddTransient<IOrderRL, OrderRL>();
             services.AddTransient<IFeedbackBL, FeedbackBL>();
             services.AddTransient<IFeedbackRL, FeedbackRL>();
+            services.AddTransient<IAdminRL, AdminRL>();
+            services.AddTransient<IAdminBL, AdminBL>();
+            services.AddTransient<IAdminBL, AdminBL>();
+
 
 
 

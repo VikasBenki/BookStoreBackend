@@ -1,5 +1,6 @@
 ﻿using BussinessLayer.Interfaces;
 using DatabaseLayer.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -16,7 +17,7 @@ namespace BookStoreApp.Controllers
         {
             this.addressBL = addressBL;
         }
-
+        [Authorize(Roles = Roles.User)]
         [HttpPost("Add")]
         public ActionResult AddAddress(AddAddress addAddress)
         {
@@ -38,6 +39,7 @@ namespace BookStoreApp.Controllers
                 return NotFound(new { success = false, message = ex.Message });
             }
         }
+        [Authorize(Roles = Roles.User)]
         [HttpPut("Update")]
         public IActionResult UpdateAddress(AddressModel updateAddress)
         {
@@ -59,7 +61,7 @@ namespace BookStoreApp.Controllers
                 return NotFound(new { success = false, message = ex.Message });
             }
         }
-
+        [Authorize(Roles = Roles.User)]
         [HttpDelete("Delete")]
         public IActionResult DeleteAddress(int addressId)
         {
@@ -82,6 +84,7 @@ namespace BookStoreApp.Controllers
             }
         }
 
+        [Authorize(Roles = Roles.User)]
         [HttpGet("Get")]
         public IActionResult GetAddressById(int typeId, int addressId)
         {
@@ -104,6 +107,7 @@ namespace BookStoreApp.Controllers
             }
         }
 
+        [Authorize(Roles = Roles.User)]
         [HttpGet("GetAll")]
         public IActionResult GetAllAddresses()
         {

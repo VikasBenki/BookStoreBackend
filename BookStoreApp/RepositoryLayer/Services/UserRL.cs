@@ -33,7 +33,7 @@ namespace RepositoryLayer.Services
                     var encryptedPassword = EncryptPassword(userReg.Password);
 
                     cmd.Parameters.AddWithValue("@FullName", userReg.FullName);
-                    cmd.Parameters.AddWithValue("EmailId", userReg.EmailId);
+                    cmd.Parameters.AddWithValue("@EmailId", userReg.EmailId);
                     cmd.Parameters.AddWithValue("@Password", encryptedPassword);
                     cmd.Parameters.AddWithValue("@MobileNumber", userReg.MobileNumber);
 
@@ -177,7 +177,7 @@ namespace RepositoryLayer.Services
 
             var claims = new[]
             {
-               
+               new Claim(ClaimTypes.Role, "User"),
                 new Claim(ClaimTypes.Email, emailID),
                 new Claim("UserId", userId.ToString())
             };

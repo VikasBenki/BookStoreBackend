@@ -41,7 +41,7 @@ namespace DatabaseLayer.UserModel
                 {
                     Port = 587,
                     EnableSsl = true,
-                    Credentials = new NetworkCredential("luckybenki@gmail.com", "Vikki123#")
+                    Credentials = new NetworkCredential("luckybenki@gmail.com", "txzibybruystioed")
                 };
                 mailMessage.From = new MailAddress("luckybenki@gmail.com");
                 mailMessage.To.Add(new MailAddress("luckybenki@gmail.com"));

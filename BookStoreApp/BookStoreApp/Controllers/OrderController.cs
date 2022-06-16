@@ -18,7 +18,7 @@ namespace BookStoreApp.Controllers
         {
             this.ordersBL = ordersBL;
         }
-
+        [Authorize(Roles = Roles.User)]
         [HttpPost("Add")]
         public IActionResult AddOrder(AddOrder addOrder)
         {
@@ -40,7 +40,7 @@ namespace BookStoreApp.Controllers
                 return NotFound(new { success = false, message = ex.Message });
             }
         }
-
+        [Authorize(Roles = Roles.User)]
         [HttpGet("GetAll")]
         public IActionResult GetAllOrders()
         {

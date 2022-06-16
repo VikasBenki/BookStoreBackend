@@ -19,7 +19,7 @@ namespace BookStoreApp.Controllers
         }
 
         [HttpPost("Add")]
-        [Authorize]
+        [Authorize(Roles = Roles.User)]
         public IActionResult AddFeedback(AddFeedback addFeedback)
         {
             try
@@ -40,7 +40,7 @@ namespace BookStoreApp.Controllers
                 return NotFound(new { success = false, message = ex.Message });
             }
         }
-
+        [Authorize(Roles = Roles.User)]
         [HttpGet("GetAll")]
         public IActionResult GetAllFeedbacks(int bookId)
         {
